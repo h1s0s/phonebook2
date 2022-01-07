@@ -3,7 +3,6 @@
 <%@	page import="com.javaex.vo.PersonVo" %>
 <%@	page import="com.javaex.dao.PhoneDao" %>
 <% 
-	System.out.println("업데이트폼접속");
 	PersonVo personVo = (PersonVo)request.getAttribute("personVo");
 	System.out.println(personVo);
  %>

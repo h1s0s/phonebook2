@@ -36,7 +36,7 @@
 				</tr>
 				<tr>
 					<td><a href="/phonebook2/pbc?action=updateForm&personid=<%= personList.get(i).getPersonId() %>">[수정]</a></td>
-					<td><a href="/phonebook2/pbc?action=deleteForm&personid=<%= personList.get(i).getPersonId() %>">[삭제]</a></td>
+					<td><a href="/phonebook2/pbc?action=delete&personid=<%= personList.get(i).getPersonId() %>">[삭제]</a></td>
 				</tr>
 			</table>
 			<br>
