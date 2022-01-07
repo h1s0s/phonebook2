@@ -42,8 +42,71 @@ public class PhonebookController extends HttpServlet {
 			//포워드
 			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/writeForm.jsp");//옮겨갈 경로
 			rd.forward(request, response);//이 2개를 넘긴다
-		} else if("insert".equals(act)) {
-			System.out.println("미구현");
+		} else if ("write".equals(act)){
+			System.out.println("action=write");
+			
+			//파라미터 3개 꺼내온다
+			String name = request.getParameter("name");
+			String hp = request.getParameter("hp");
+			String company = request.getParameter("company");
+			//vo로 만든다
+			PersonVo personVo = new PersonVo(name, hp, company);
+			System.out.println(personVo);
+			
+			//dao 메모리에 올린다
+			PhoneDao phoneDao = new PhoneDao();
+			
+			//dao.insert();
+			phoneDao.personInsert(personVo);
+			
+			//리다이렉트
+			response.sendRedirect("/phonebook2/pbc?action=list");
+			//=>리다이렉트는 리스폰의 메소드를 사용, 파일경로가 아닌 주소값을 넣어줌.
+			
+		} else if ("updateForm".equals(act)) {
+			System.out.println("action=updateForm");
+			
+			//파라미터 꺼내온다
+			int personId = Integer.parseInt(request.getParameter("personid"));
+			
+			//dao 메모리에 올린다
+			PhoneDao phoneDao = new PhoneDao();
+			
+			//getPerson
+			PersonVo personVo = phoneDao.getPerson(personId);
+			
+			//포워드
+			request.setAttribute("personVo", personVo);
+			System.out.println(personVo);
+			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/updateForm.jsp");//옮겨갈 경로
+			rd.forward(request, response);//이 2개를 넘긴다
+			
+		} else if ("update".equals(act)) {
+			System.out.println("action=update");
+			
+			//파라미터 3개 꺼내온다
+			int personId = Integer.parseInt(request.getParameter("personid"));
+			String name = request.getParameter("name");
+			String hp = request.getParameter("hp");
+			String company = request.getParameter("company");
+			
+			//vo로 만든다
+			PersonVo personVo = new PersonVo(personId, name, hp, company);
+			System.out.println(personVo);
+			
+			//dao 메모리에 올린다
+			PhoneDao phoneDao = new PhoneDao();
+			
+			//dao.insert();
+			phoneDao.personUpdate(personVo);
+			
+			//리다이렉트
+			response.sendRedirect("/phonebook2/pbc?action=list");
+			//=>리다이렉트는 리스폰의 메소드를 사용, 파일경로가 아닌 주소값을 넣어줌.
+		} else if ("deleteForm".equals(act)) {
+			System.out.println("action=deleteForm");
+		} else if ("delete".equals(act)) {
+			System.out.println("action=delete");
 		} else {
 			System.out.println("파라미터 값 없음");
 		}
