@@ -43,5 +43,6 @@
 		<% 
 		}
 		%>
+		<a href="/phonebook2/pbc?action=writeForm">전화번호 등록폼</a>
 	</body>
 </html>

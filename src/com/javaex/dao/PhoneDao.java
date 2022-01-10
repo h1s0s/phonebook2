@@ -18,7 +18,7 @@ public class PhoneDao {
 	ResultSet rs = null;
 
 	private String driver = "oracle.jdbc.driver.OracleDriver";
-	private String url = "jdbc:oracle:thin:@172.30.1.54:1521:xe";
+	private String url = "jdbc:oracle:thin:@192.168.0.62:1521:xe";
 	private String id = "phonedb";
 	private String pw = "phonedb";
 
@@ -76,7 +76,7 @@ public class PhoneDao {
 
 	         pstmt.setInt(1, personId); // ?(물음표) 중 1번째, 순서중요
 	         
-	         
+
 	         rs = pstmt.executeQuery();
 
 	         // 4.결과처리
